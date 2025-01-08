@@ -4,6 +4,8 @@ import { ref } from 'vue'
 const file = ref(null)
 const compressedImage = ref(null)
 const compressionLevel = ref(80)
+const originalSize = ref(null)
+const compressedSize = ref(null)
 
 const handleFileUpload = (event) => {
   const uploadedFile = event.target.files[0]
@@ -15,6 +17,7 @@ const handleFileUpload = (event) => {
   }
   
   file.value = uploadedFile
+  originalSize.value = (uploadedFile.size / 1024).toFixed(2) + ' KB'
   compressImage(uploadedFile)
 }
 
@@ -38,6 +41,7 @@ const compressImage = (imageFile) => {
       
       canvas.toBlob((blob) => {
         compressedImage.value = URL.createObjectURL(blob)
+        compressedSize.value = (blob.size / 1024).toFixed(2) + ' KB'
       }, 'image/jpeg', compressionLevel.value / 100)
     }
   }
@@ -70,6 +74,10 @@ const downloadImage = () => {
 
     <div v-if="compressedImage" class="preview-section">
       <h3>压缩结果预览</h3>
+      <div class="size-info">
+        <p>原始大小: {{ originalSize }}</p>
+        <p>压缩后大小: {{ compressedSize }}</p>
+      </div>
       <img :src="compressedImage" alt="压缩后的图片">
       <div class="controls">
         <label>
@@ -101,6 +109,18 @@ const downloadImage = () => {
 
 .preview-section {
   margin-top: 30px;
+}
+
+.size-info {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.size-info p {
+  margin: 5px 0;
+  color: #666;
 }
 
 .preview-section img {
