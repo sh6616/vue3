@@ -6,6 +6,7 @@ const router = useRouter()
 const menuItems = ref([
   { name: '仪表盘', path: '/', icon: '📊' },
   { name: '用户管理', path: '/users', icon: '👥' },
+  { name: '图片压缩', path: '/image-compress', icon: '🖼️' },
   { name: '设置', path: '/settings', icon: '⚙️' },
 ])
 </script>
