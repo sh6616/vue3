@@ -40,7 +40,7 @@ const handleLogin = async () => {
           <input
             v-model="username"
             type="text"
-            placeholder="用户名"
+            placeholder="用户名：admin"
             autocomplete="username"
           >
         </div>
@@ -48,7 +48,7 @@ const handleLogin = async () => {
           <input
             v-model="password"
             type="password"
-            placeholder="密码"
+            placeholder="密码：admin123"
             autocomplete="current-password"
           >
         </div>
