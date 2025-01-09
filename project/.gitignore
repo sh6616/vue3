@@ -1,0 +1,13 @@
+# 忽略node_modules目录
+node_modules/
+
+# 忽略npm缓存文件
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# 忽略IDE配置文件，以WebStorm为例
+.idea/
+
+# 忽略本地环境配置文件
+#.env
